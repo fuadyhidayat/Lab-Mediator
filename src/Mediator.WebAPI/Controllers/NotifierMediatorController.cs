@@ -5,7 +5,7 @@ namespace Mediator.WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class NotifierMediatorController : ControllerBase
+    public class NotifierMediatorController : ApiController
     {
         private readonly INotifierMediatorService _notifierMediatorService;
 
@@ -36,6 +36,14 @@ namespace Mediator.WebAPI.Controllers
             _notifierMediatorService.Notify();
 
             return Ok("NotifyAllIActionResult");
+        }
+
+        [HttpGet]
+        public IActionResult NotifyAll()
+        {
+            Mediator.Publish(new NotificationMessage { NotifyText = "This is a test notification" });
+
+            return Ok("NotifyAll");
         }
     }
 }
