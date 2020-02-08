@@ -2,6 +2,15 @@
 {
     public class HandlerArgs
     {
-        public string Value { get; set; } = "Handler Args Default Value";
+        public string Value { get; set; }
+
+        public HandlerArgs() : this("Handler Args Default Value")
+        {
+        }
+
+        public HandlerArgs(string value)
+        {
+            this.Value = value;
+        }
     }
 }
